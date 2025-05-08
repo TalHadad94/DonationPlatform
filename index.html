@@ -10,20 +10,21 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="Images/logo.png" alt="Logo">
+        <img id="logo" src="Images/logo.png" alt="Logo">
+
+        <!-- Burger Icon -->
+        <div class="burger" onclick="toggleSidebar()">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+
+        <!-- Language Toggle Button -->
+        <button id="lang-toggle" onclick="toggleLanguage()">🌐</button>
     </header>
-    <p>Here will open DonationPlatform</p>
-    <!-- Burger Icon -->
-    <div class="burger" onclick="toggleSidebar()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar">
         <a href="#">Donor personal area</a>
         <a href="#">Donated personal area</a>
         <a href="#">Personal report</a>
@@ -34,13 +35,17 @@
     <div class="content">
         <div id="donations">
             <!-- Donations will add to here -->
-            <h1>Hello, World!</h1>
+            <h1>Donation Platform</h1>
         </div>
     </div>
     
     <script>
         function toggleSidebar() {
-          document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        function toggleLanguage() {
+            document.body.classList.toggle('rtl');
         }
     </script>
 </body>
