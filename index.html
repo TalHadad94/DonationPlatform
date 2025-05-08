@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>אתר תרומות</title>
+    <title>Donation Platform</title>
     <link rel="stylesheet" href="CSS/style.css">
     <meta name="robots" content="index, follow">
     <meta property="og:url" content="https://github.com/TalHadad94/DonationPlatform">
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="Images/logo.png" alt="Logo">
+        </div>
+    </header>
     <p>Here will open DonationPlatform</p>
+    <!-- Burger Icon -->
+    <div class="burger" onclick="toggleSidebar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="#">Donor personal area</a>
+        <a href="#">Donated personal area</a>
+        <a href="#">Personal report</a>
+        <a href="#">Upload request</a>
+    </div>
+
+  <!-- Main Content -->
+    <div class="content">
+        <div id="donations">
+            <!-- Donations will add to here -->
+            <h1>Hello, World!</h1>
+        </div>
+    </div>
+    
+    <script>
+        function toggleSidebar() {
+          document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
