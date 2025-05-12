@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Donation Platform</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/header.css">
     <meta name="robots" content="index, follow">
     <meta property="og:url" content="https://github.com/TalHadad94/DonationPlatform">
 </head>
@@ -13,7 +14,7 @@
         <img id="logo" src="Images/logo.png" alt="Logo">
 
         <!-- Burger Icon -->
-        <div class="burger" onclick="toggleSidebar()">
+        <div id="burger" onclick="toggleSidebar()">
             <div></div>
             <div></div>
             <div></div>
@@ -32,7 +33,7 @@
     </div>
 
   <!-- Main Content -->
-    <div class="content">
+    <div id="content">
         <div id="donations">
             <!-- Donations will add to here -->
             <h1>Donation Platform</h1>
@@ -48,5 +49,6 @@
             document.body.classList.toggle('rtl');
         }
     </script>
+    <script src="JS/donations.js"></script>
 </body>
 </html>
