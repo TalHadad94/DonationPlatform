@@ -39,10 +39,10 @@ body {
     left: -250px;
     width: 250px;
     height: 100%;
-    background-color: #333;
+    background-color: #fbbca59a;
     color: white;
     padding-top: 60px;
-    transition: left 0.5s ease;
+    transition: 0.5s ease;
     z-index: 1000;
 }
 
