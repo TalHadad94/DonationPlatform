@@ -1,0 +1,16 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "donation-api",
+	"main": "src/index.js",
+	"compatibility_date": "2025-05-15",
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "donations",
+			"database_name": "donations",
+			"database_id": "a54a7ddd-5638-4ad4-8f60-e110b8f0888d"
+		}
+	]
+}
