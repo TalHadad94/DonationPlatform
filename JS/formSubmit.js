@@ -3,7 +3,7 @@ document.getElementById('donation-form').addEventListener('submit', async functi
 
   const owner = document.getElementById('owner').value;
   const text = document.getElementById('text').value;
-  const date = document.getElementById('date').value;
+  const uploadDate = document.getElementById('uploadDate').value;
   const items = document.getElementById('items').value.split(',').map(i => i.trim());
   const cost_range = document.getElementById('cost_range').value;
   const current_donations = parseInt(document.getElementById('current_donations').value) || 0;
@@ -15,7 +15,7 @@ document.getElementById('donation-form').addEventListener('submit', async functi
   const data = {
     owner,
     text,
-    date,
+    uploadDate,
     items,
     cost_range,
     current_donations,

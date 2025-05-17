@@ -11,7 +11,7 @@ export default {
         const {
           owner,
           text,
-          date,
+          uploadDate,
           items,
           cost_range,
           current_donations,
@@ -23,7 +23,7 @@ export default {
           INSERT INTO donations (
             owner,
             text,
-            date,
+            uploadDate,
             items,
             cost_range,
             current_donations,
@@ -34,7 +34,7 @@ export default {
         .bind(
           owner,
           text,
-          date,
+          uploadDate,
           JSON.stringify(items),
           cost_range,
           current_donations,
