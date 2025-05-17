@@ -13,38 +13,17 @@
 
 <body>
     <h2 style="text-align:center">Submit a Donation</h2>
-    <form id="donationForm">
-        <input type="text" name="owner" placeholder="Your Name" required>
-        <textarea name="text" placeholder="Donation Description" required></textarea>
-        <input type="date" name="uploadDate" required>
-        <input type="text" name="itemsNeeded" placeholder="Comma-separated items" required>
-        <input type="text" name="costRange" placeholder="Cost Range (e.g., $50 - $200)" required>
-        <input type="text" name="currentDonations" placeholder="Current Donations" required>
-        <input type="text" name="donationOptions" placeholder="Payment options (e.g., PayPal, Bit)" required>
-        <input type="text" name="donationLimit" placeholder="Donation Limit" required>
+    <form id="donation-form">
+        <input type="text" id="owner" name="owner" placeholder="Your Name" required />
+        <textarea id="text" name="text" placeholder="Donation Description" required></textarea>
+        <input type="date" id="date" name="uploadDate" required />
+        <input type="text" id="items" name="itemsNeeded" placeholder="Comma-separated items" required />
+        <input type="text" id="cost_range" name="costRange" placeholder="Cost Range (e.g., $50 - $200)" required />        
+        <input type="number" id="current_donations" name="currentDonations" placeholder="Current Donations" required />        
+        <input type="text" id="options" name="donationOptions" placeholder="Payment options (e.g., PayPal, Bit)" required />        
+        <input type="number" id="max_donation" name="donationLimit" placeholder="Donation Limit" required />        
         <button type="submit">Submit</button>
     </form>
-
-    <script>
-        document.getElementById('donationForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const body = {};
-        formData.forEach((value, key) => body[key] = value);
-
-        const response = await fetch("https://your-worker-name.your-subdomain.workers.dev/api/donations", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
-        });
-
-        if (response.ok) {
-            alert("Donation submitted!");
-            this.reset();
-        } else {
-            alert("Something went wrong.");
-        }
-        });
-    </script>
+    <script src="../JS/formSubmit.js"></script>
 </body>
 </html>

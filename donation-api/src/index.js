@@ -1,15 +1,71 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
 export default {
-	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
-	},
+  async fetch(request, env, ctx) {
+    if (request.method === 'OPTIONS') {
+      return handleOptions(request);
+    }
+
+    if (request.method === 'POST') {
+      try {
+        const body = await request.json();
+
+        const {
+          owner,
+          text,
+          date,
+          items,
+          cost_range,
+          current_donations,
+          options,
+          limits,
+        } = body;
+
+        const result = await env.donations.prepare(`
+          INSERT INTO donations (
+            owner,
+            text,
+            date,
+            items,
+            cost_range,
+            current_donations,
+            options,
+            limits
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `)
+        .bind(
+          owner,
+          text,
+          date,
+          JSON.stringify(items),
+          cost_range,
+          current_donations,
+          JSON.stringify(options),
+          JSON.stringify(limits)
+        )
+        .run();
+
+        return new Response(JSON.stringify({ success: true, result }), {
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+
+      } catch (err) {
+        return new Response(JSON.stringify({ success: false, error: err.message }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+      }
+    }
+
+    return new Response("Not Found", { status: 404 });
+  }
 };
+
+function handleOptions(request) {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    }
+  });
+}
