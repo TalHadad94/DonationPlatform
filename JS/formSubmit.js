@@ -22,6 +22,8 @@ document.getElementById('donation-form').addEventListener('submit', async functi
     donationLimit
   };
 
+  console.log("Sending data:", data);
+
   try {
     const response = await fetch("https://donation-api.talsmd95-a82.workers.dev", {
       method: "POST",
