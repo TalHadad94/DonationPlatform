@@ -12,11 +12,11 @@ export default {
           owner,
           text,
           uploadDate,
-          items,
-          cost_range,
-          current_donations,
-          options,
-          limits,
+          itemsNeeded,
+          costRange,
+          currentDonations,
+          donationOptions,
+          donationLimit
         } = body;
 
         const result = await env.donations.prepare(`
@@ -24,22 +24,22 @@ export default {
             owner,
             text,
             uploadDate,
-            items,
-            cost_range,
-            current_donations,
-            options,
-            limits
+            itemsNeeded,
+            costRange,
+            currentDonations,
+            donationOptions,
+            donationLimit
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         `)
         .bind(
           owner,
           text,
           uploadDate,
-          JSON.stringify(items),
-          cost_range,
-          current_donations,
-          JSON.stringify(options),
-          JSON.stringify(limits)
+          JSON.stringify(itemsNeeded),
+          costRange,
+          currentDonations,
+          JSON.stringify(donationOptions),
+          donationLimit
         )
         .run();
 
