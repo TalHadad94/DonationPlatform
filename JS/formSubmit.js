@@ -3,24 +3,23 @@ document.getElementById('donation-form').addEventListener('submit', async functi
 
   const owner = document.getElementById('owner').value;
   const text = document.getElementById('text').value;
-  const uploadDate = document.getElementById('uploadDate').value;
-  const items = document.getElementById('items').value.split(',').map(i => i.trim());
-  const cost_range = document.getElementById('cost_range').value;
-  const current_donations = parseInt(document.getElementById('current_donations').value) || 0;
-  const options = document.getElementById('options').value.split(',').map(o => o.trim());
-  const limits = {
-    max_donation: parseInt(document.getElementById('max_donation').value) || 0
-  };
+  const uploadDate = document.getElementById('uploadDate').value; // make sure this ID matches your HTML
+  const itemsNeeded = document.getElementById('items').value.split(',').map(i => i.trim()).join(',');
+  const costRange = document.getElementById('cost_range').value;
+  const currentDonations = parseInt(document.getElementById('current_donations').value) || 0;
+  const donationOptions = document.getElementById('options').value.split(',').map(o => o.trim()).join(',');
+  const donationLimit = parseInt(document.getElementById('max_donation').value) || 0;
 
+  // This matches the DB schema exactly:
   const data = {
     owner,
     text,
     uploadDate,
-    items,
-    cost_range,
-    current_donations,
-    options,
-    limits
+    itemsNeeded,
+    costRange,
+    currentDonations,
+    donationOptions,
+    donationLimit
   };
 
   try {
